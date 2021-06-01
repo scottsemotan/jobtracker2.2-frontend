@@ -58,13 +58,56 @@ function JobForm() {
         setJobs(getResults.data)
     }
 
+    //function to toggle rejected
+    const rejected = async (id) => {
 
+        const idToken = await auth.currentUser.getIdToken(/* forceRefresh */ true)
+        const eResponse = await axios(`http://localhost:8181/rejected/${id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Authorization": `Bearer ${idToken}`
+                }
+            });
+
+        const getResults = await axios('http://localhost:8181/job-apps',
+            {
+                headers: {
+                    "Authorization": `Bearer ${idToken}`
+                }
+            })
+        //console.log(results.data)
+        setJobs(getResults.data)
+    }
+
+    //function to toggle interview_scheduled
+    const interviewScheduled = async (id) => {
+
+        const idToken = await auth.currentUser.getIdToken(/* forceRefresh */ true)
+        const eResponse = await axios(`http://localhost:8181/interview/${id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Authorization": `Bearer ${idToken}`
+                }
+            });
+
+        const getResults = await axios('http://localhost:8181/job-apps',
+            {
+                headers: {
+                    "Authorization": `Bearer ${idToken}`
+                }
+            })
+        //console.log(results.data)
+        setJobs(getResults.data)
+
+    }
     //Function to delete card from UI
 
     const deleteJob = async (id) => {
 
         const idToken = await auth.currentUser.getIdToken(/* forceRefresh */ true)
-        const deleteResults = await axios(`http://localhost:8181/job-apps/${id}`,
+        const deleteResults = await axios(`http://localhost:8181/delete-job/${id}`,
             {
                 method: "PUT",
                 headers: {
@@ -192,6 +235,8 @@ function JobForm() {
                                                 </Card.Text>
                                                 <DropdownButton id="dropdown-item-button" title="Options">
                                                     <Dropdown.Item as="button" onClick={() => { employerResponse(job.id) }} data-toggle="button" aria-pressed="false" autoComplete="off">Response?</Dropdown.Item>
+                                                    <Dropdown.Item as="button" onClick={() => { rejected(job.id) }} data-toggle="button" aria-pressed="false" autoComplete="off">Rejected</Dropdown.Item>
+                                                    <Dropdown.Item as="button" onClick={() => { interviewScheduled(job.id) }} data-toggle="button" aria-pressed="false" autoComplete="off">Interview Scheduled</Dropdown.Item>
                                                     <Dropdown.Item as="button" onClick={() => { deleteJob(job.id) }}>Delete</Dropdown.Item>
 
                                                 </DropdownButton>
