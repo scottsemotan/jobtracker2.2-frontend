@@ -24,7 +24,7 @@ function JobForm() {
 
             const idToken = await auth.currentUser.getIdToken(/* forceRefresh */ true)
             
-            const results = await axios('http://localhost:8181/job-apps',
+            const results = await axios('https://jobtracker2-2.herokuapp.com/job-apps',
                 {
                     headers: {
                         "Authorization": `Bearer ${idToken}`
@@ -40,7 +40,7 @@ function JobForm() {
     const employerResponse = async (id) => {
 
         const idToken = await auth.currentUser.getIdToken(/* forceRefresh */ true)
-        const eResponse = await axios(`http://localhost:8181/employer-response/${id}`,
+        const eResponse = await axios(`https://jobtracker2-2.herokuapp.com/employer-response/${id}`,
             {
                 method: "PUT",
                 headers: {
@@ -48,7 +48,7 @@ function JobForm() {
                 }
             });
 
-        const getResults = await axios('http://localhost:8181/job-apps',
+        const getResults = await axios('https://jobtracker2-2.herokuapp.com/job-apps',
             {
                 headers: {
                     "Authorization": `Bearer ${idToken}`
@@ -62,7 +62,7 @@ function JobForm() {
     const rejected = async (id) => {
 
         const idToken = await auth.currentUser.getIdToken(/* forceRefresh */ true)
-        const eResponse = await axios(`http://localhost:8181/rejected/${id}`,
+        const eResponse = await axios(`https://jobtracker2-2.herokuapp.com/rejected/${id}`,
             {
                 method: "PUT",
                 headers: {
@@ -70,7 +70,7 @@ function JobForm() {
                 }
             });
 
-        const getResults = await axios('http://localhost:8181/job-apps',
+        const getResults = await axios('https://jobtracker2-2.herokuapp.com/job-apps',
             {
                 headers: {
                     "Authorization": `Bearer ${idToken}`
@@ -84,7 +84,7 @@ function JobForm() {
     const interviewScheduled = async (id) => {
 
         const idToken = await auth.currentUser.getIdToken(/* forceRefresh */ true)
-        const eResponse = await axios(`http://localhost:8181/interview/${id}`,
+        const eResponse = await axios(`https://jobtracker2-2.herokuapp.com/interview/${id}`,
             {
                 method: "PUT",
                 headers: {
@@ -92,7 +92,7 @@ function JobForm() {
                 }
             });
 
-        const getResults = await axios('http://localhost:8181/job-apps',
+        const getResults = await axios('https://jobtracker2-2.herokuapp.com/job-apps',
             {
                 headers: {
                     "Authorization": `Bearer ${idToken}`
@@ -107,7 +107,7 @@ function JobForm() {
     const deleteJob = async (id) => {
 
         const idToken = await auth.currentUser.getIdToken(/* forceRefresh */ true)
-        const deleteResults = await axios(`http://localhost:8181/delete-job/${id}`,
+        const deleteResults = await axios(`https://jobtracker2-2.herokuapp.com/delete-job/${id}`,
             {
                 method: "PUT",
                 headers: {
@@ -115,7 +115,7 @@ function JobForm() {
                 }
             });
 
-        const getResults = await axios('http://localhost:8181/job-apps',
+        const getResults = await axios('https://jobtracker2-2.herokuapp.com/job-apps',
             {
                 headers: {
                     "Authorization": `Bearer ${idToken}`
@@ -139,7 +139,7 @@ function JobForm() {
 
 
         const idToken = await auth.currentUser.getIdToken(/* forceRefresh */ true)
-        const addJobs = await axios('http://localhost:8181/job-apps',
+        const addJobs = await axios('https://jobtracker2-2.herokuapp.com/job-apps',
 
             {
                 data: JSON.stringify(postJob),
@@ -152,7 +152,7 @@ function JobForm() {
 
         //setting state for submit
 
-        const sendJob = await axios('http://localhost:8181/job-apps',
+        const sendJob = await axios('https://jobtracker2-2.herokuapp.com/job-apps',
             {
                 headers: {
                     "Authorization": `Bearer ${idToken}`
