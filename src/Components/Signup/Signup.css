@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+}
+
+.signin-page{
+    position: relative;
+    background-color: hsla(0,0%,0%, .55);
+}
+
+.signinBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    
+    will-change: transform;
+    z-index: -1;
+    background-image: url("../../assets/meeting.png");
+    background-color: hsla(0,0%,0%, 1);
+  }
+
+.signInButton {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    color:beige ;
+}
+/* 
+.formControl{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+   
+} */
+
+/* .cardClass{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.signin_jumbo{
+    display: flex;
+    background-color: orange;
+    height: 100vh;
+
+
+}
+
+.signinImage{
+  
+    width: 50vw;
+    height: 50vh;
+    background-size: cover;
+    background-position: center center;
+
+}
+
+.contain{
+    display: flex;
+    flex-direction: row;
+    background-color: purple;
+
+    
+}
+
+.signinRow{
+    display: flex;
+    height: 100vh;
+   
+}
+
+.signinCol{
+    display: flex;
+    height: 10vh;
+}
+
+
+
+
+
+.cardClass{
+    display: flex;
+    justify-content: left;
+    width: 70%;
+    height: 50%;
+}
+
+/* row */
+#root > div > div.container-fluid > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: flex-end;
+    
+}
+#root > div > div.container-fluid > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    margin-right: 20px;
+   
+
+}

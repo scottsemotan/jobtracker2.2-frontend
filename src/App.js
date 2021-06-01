@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+//Components
+import SignInComponent from "./Components/Signin/SigninComponent"
+import SignupComponent from "./Components/Signup/SignupComponent"
+import Indeed from "./Components/Indeed"
+import Home from "./Components/Home/Home"
+import HiddenRoute from "./Components/HiddenRoute"
+import LandingPage from "./Components/Landing Page/LandingPage"
+import Nav from "./Components/Nav/Nav"
+
+//State
+import { AuthProvider } from "./Context/AuthContext";
+
+//Router
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+       
+          <Router>
+            <AuthProvider>
+              <Nav />
+              
+            <Switch>
+              <Route exact path="/" component={LandingPage} />
+              <Route path="/signup" component={SignupComponent} />
+              <Route path="/signin" component={SignInComponent} />
+              <Route path="/searchjobs" component={Indeed} />
+
+              <HiddenRoute path="/home" component={Home} />
+
+            </Switch>
+            
+            </AuthProvider>
+          </Router>
+          
+    
+      
+    
   );
 }
 
