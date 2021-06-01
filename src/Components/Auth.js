@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const passkey = process.env.REACT_APP_FIREBASE_API_KEY;
+
 const Auth = () => {
   function setCookie(cname, cvalue, exseconds) {
     var d = new Date();
@@ -16,7 +18,7 @@ const Auth = () => {
   const signUp = async () => {
     try {
       const results = await axios.post(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC0rtYh8Dw3LVgDgxKJuDzKGEG6tATURmA",
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${passkey}`,
         { email: email, password: password, returnSecureToken: true }
       );
       setCookie("idToken", results.data.idToken, 3600);
@@ -31,7 +33,7 @@ const Auth = () => {
   const signIn = async () => {
     try {
       const results = await axios.post(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC0rtYh8Dw3LVgDgxKJuDzKGEG6tATURmA",
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${passkey}`,
         { email: email, password: password, returnSecureToken: true }
       );
       setCookie("idToken", results.data.idToken, 3600);
