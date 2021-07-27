@@ -272,6 +272,8 @@ function JobForm() {
                                                 </Card.Text>
                                                 <DropdownButton id="dropdown-item-button" title="Options">
                                                     <Dropdown.Item as="button" onClick={() => { employerResponse(job.id) }} data-toggle="button" aria-pressed="false" autoComplete="off">Response?</Dropdown.Item>
+                                                    <Dropdown.Item as="button" onClick={() => { rejected(job.id) }} data-toggle="button" aria-pressed="false" autoComplete="off">Rejected</Dropdown.Item>
+                                                    <Dropdown.Item as="button" onClick={() => { interviewScheduled(job.id) }} data-toggle="button" aria-pressed="false" autoComplete="off">Interview Scheduled</Dropdown.Item>
                                                     <Dropdown.Item as="button" onClick={() => { deleteJob(job.id) }}>Delete</Dropdown.Item>
 
                                                 </DropdownButton>
@@ -280,6 +282,48 @@ function JobForm() {
                                         </Card>
                                     </Col>
                                 )
+                            
+                            //renders card with "Rejected!" and turns it a color when rejected is true 
+                            if (job.is_deleted !== true && job.rejected !== false)
+                                return (
+                                    <Col >
+                                        <Card className="col-2"
+                                            bg={variant.toLowerCase()}
+                                            key={idx}
+                                            text={variant.toLowerCase() === "light" ? "dark" : "white"}
+                                            style={{ width: "16rem" }}
+                                            className="mb-2"
+                                        >
+                                            <Card.Body className="card-rejected" style={{ backgroundColor: "rgba(209, 61, 61, 0.5)" }}>
+                                                <Card.Header>Job Application #{job.id} </Card.Header>
+                                                <br></br>
+                                                <Card.Title>{job.job_title}</Card.Title>
+                                                <Card.Text>
+                                                    {job.company_name}
+                                                    <br></br>
+                                                    {job.city}
+                                                    <br></br>
+                                                    {job.date_applied}
+                                                    <br></br>
+                                                    <p className="response">Rejected!</p>
+                                                </Card.Text>
+                                                <DropdownButton id="dropdown-item-button" title="Options">
+                                                    <Dropdown.Item as="button" onClick={() => { employerResponse(job.id) }} data-toggle="button" aria-pressed="false" autoComplete="off">Response?</Dropdown.Item>
+                                                    <Dropdown.Item as="button" onClick={() => { rejected(job.id) }} data-toggle="button" aria-pressed="false" autoComplete="off">Rejected</Dropdown.Item>
+                                                    <Dropdown.Item as="button" onClick={() => { interviewScheduled(job.id) }} data-toggle="button" aria-pressed="false" autoComplete="off">Interview Scheduled</Dropdown.Item>
+                                                    <Dropdown.Item as="button" onClick={() => { deleteJob(job.id) }}>Delete</Dropdown.Item>
+
+                                                </DropdownButton>
+                                                <br></br>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                )
+
+
+
+
+
                         })
                     }
                 </Row>
